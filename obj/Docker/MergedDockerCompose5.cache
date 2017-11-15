@@ -1,0 +1,33 @@
+services:
+  db:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: ZacetnoGeslo2017+
+    image: microsoft/mssql-server-linux
+  webapplication1:
+    build:
+      args:
+        source: obj/Docker/empty/
+      context: C:\Users\dean.podgornik\Desktop\testA\WebApplication1\WebApplication1
+      dockerfile: Dockerfile
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: /root/.nuget/fallbackpackages
+    image: webapplication1:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages
+        --additionalProbingPath /root/.nuget/fallbackpackages  bin/Debug/netcoreapp2.0/WebApplication1.dll'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/bash -c "if PID=$$(pidof
+        -x dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - 80/tcp
+    volumes:
+    - C:\Users\dean.podgornik\Desktop\testA\WebApplication1\WebApplication1:/app:rw
+    - C:\Users\dean.podgornik\vsdbg:/remote_debugger:ro
+    - C:\Program Files\dotnet\sdk\NuGetFallbackFolder:/root/.nuget/fallbackpackages:ro
+    - C:\Users\dean.podgornik\.nuget\packages:/root/.nuget/packages:ro
+version: '3.0'

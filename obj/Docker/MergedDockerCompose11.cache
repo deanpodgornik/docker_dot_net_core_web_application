@@ -1,0 +1,18 @@
+services:
+  db:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: ZacetnoGeslo2017+
+    image: microsoft/mssql-server-linux
+    ports:
+    - 1433:1433/tcp
+  webapplication1:
+    build:
+      context: C:\Users\dean.podgornik\Desktop\testA\WebApplication1\WebApplication1
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: webapplication1
+    ports:
+    - 80/tcp
+version: '3.0'

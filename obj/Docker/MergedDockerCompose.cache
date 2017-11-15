@@ -1,0 +1,11 @@
+services:
+  webapplication1:
+    build:
+      context: C:\Users\dean.podgornik\Desktop\testA\WebApplication1\WebApplication1
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: webapplication1
+    ports:
+    - 80/tcp
+version: '3.0'

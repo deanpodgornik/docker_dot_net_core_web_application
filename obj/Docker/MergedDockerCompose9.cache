@@ -1,0 +1,34 @@
+networks:
+  www: {}
+services:
+  db:
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: ZacetnoGeslo2017+
+    image: microsoft/mssql-server-linux
+    networks:
+      www: null
+  webapplication1:
+    build:
+      args:
+        source: obj/Docker/empty/
+      context: C:\Users\dean.podgornik\Desktop\testA\WebApplication1\WebApplication1
+      dockerfile: Dockerfile
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+    image: webapplication1:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/bash -c "if PID=$$(pidof
+        -x dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    networks:
+      www: null
+    ports:
+    - 80/tcp
+    volumes:
+    - C:\Users\dean.podgornik\Desktop\testA\WebApplication1\WebApplication1:/app:rw
+    - C:\Users\dean.podgornik\vsdbg:/remote_debugger:ro
+version: '3.0'
