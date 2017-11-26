@@ -1,5 +1,4 @@
-# Docker .NET Core Web application
-==============================================
+# Docker .NET Core Web application with MS SQL connection
 
 
 A Visual Studio sollution prepared to be used (plug and play) with Docker. It will create 2 contaners, one for the web server and one for the SQL server (both running on Linux).
