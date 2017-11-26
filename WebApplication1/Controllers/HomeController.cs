@@ -14,22 +14,21 @@ namespace WebApplication1.Controllers
         public IActionResult Index()
         {
             //CONNECTION STRING TEST - BEGIN
+            /*
             SqlConnection cnn;
-            var connection = @"Server=db;Database=dean;User=sa;Password=ZacetnoGeslo2017+;";
-
+            var connection = @"Server=db;Database=dean;User=sa;Password=TestPassZXY017+;";
             cnn = new SqlConnection(connection);
             try
             {
                 cnn.Open();
-                //MessageBox.Show("Connection Open ! ");
                 cnn.Close();
             }
             catch (Exception ex)
             {
-                var xxx = 1;
-                //MessageBox.Show("Can not open connection ! ");
+                
             }
-            //CONNECTION STRING TEST - BEGIN
+            //*/
+            //CONNECTION STRING TEST - END
 
             return View();
         }
