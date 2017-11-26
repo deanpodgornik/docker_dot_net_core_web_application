@@ -56,3 +56,7 @@ services:
     ports:
     - "1433:1433"
 ```
+
+> **webapplication1** is a container for the Web Server
+
+> **db** is a container for hodling the MS SQL Server
