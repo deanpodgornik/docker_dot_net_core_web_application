@@ -16,21 +16,27 @@ Connection to the SQL server (separate container)
 > **Code:** A code example of a SQL connection (MSSQL is located in another container) is located in the following file: *Controllers/HomeController.cs*. The important lines are:
 
 ```
+//CONNECTION STRING TEST - BEGIN
+/*
 SqlConnection cnn;
-var connection = @"Server=db;Database=dean;User=sa;Password=ZacetnoGeslo2017+;";
+var connection = @"Server=db;Database=dean;User=sa;Password=TestPassZXY017+;";
 cnn = new SqlConnection(connection);
 try
 {
-    cnn.Open();    
+    cnn.Open();
     cnn.Close();
 }
 catch (Exception ex)
 {
+
 }
+//*/
+//CONNECTION STRING TEST - END
 ```
 
 > **Server=db:** "db" is the name of the image instance (container), which is defined in the *docker-compose.yml* file below.
 
+> All the mentioned lines above are commented out, bacause at the first project run you need to create a DB first (used DB name in this example is 'dean'). When you will create a DB, uncomment those lines and at the next application start, the C# code above should establish a connection to the MS SQL server without any errors.
 
 Insight into docker-compose.yml
 -------------
