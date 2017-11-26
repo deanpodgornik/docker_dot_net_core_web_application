@@ -27,7 +27,7 @@ catch (Exception ex)
 }
 ```
 
-> **Server=db:** "db" is the name of the image instance (container), which is defined in the *docker-compose.yml* defined below.
+> **Server=db:** "db" is the name of the image instance (container), which is defined in the *docker-compose.yml* file below.
 
 
 Insight into docker-compose.yml
